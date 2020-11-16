@@ -1,6 +1,9 @@
 # mandelbrot-numba
 
-This repository contains the Mandelbrot Set Generator code with zoom feature. It is a good starting point for new `numba` users to witness the various ways in which one can achieve code speed-up using `numba`.
+**This repository is based on the PyData Global 2020 & PyCon Sweden 2020 talk on `numba` which can be accessed [here](https://realworldpython.guide/pycon-sweden-2020/).**
+
+This repository contains the Mandelbrot Set Generator code with a GUI and zoom feature.  
+It is a good starting point for new `numba` users to witness the various ways in which one can achieve code speed-up using `numba`.
 
 Each implementation has a dedicated branch and the recommended learning sequence that should be followed is provided below:
 
@@ -23,7 +26,7 @@ A Tkinter GUI will pop-up. You can use `left` mouse button to drag and select an
 
 ![](mandelbrot.gif)
 
-Install the following dependencies:
+Don't forget to install the following dependencies:
 
 ```
 $ pip3 install numba numpy Pillow
