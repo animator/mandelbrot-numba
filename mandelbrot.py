@@ -27,7 +27,7 @@ def mandelbrot(bbox, width, max_iter):
                 c = c * c + c0
     return pixels
 
-class Sketchpad(Canvas):
+class MandelbrotCanvas(Canvas):
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
         self.bind("<ButtonPress-1>", self.on_button_press)
@@ -40,23 +40,43 @@ class Sketchpad(Canvas):
         self.start_y = None
         self.end_x = None
         self.end_y = None
-        self.plane = (-2.0, -1.5, 1.0, 1.5) #r1, i1, r2, i2
+        # Setting the bounds of real and imaginary axes
+        # given by a tuple r1, i1, r2, i2
+        self.plane = (-2.0, -1.5, 1.0, 1.5) 
+
+        # The first computation
         t = time.time()
         self.default_mandelbrot = self.calculate()
         time_exec = time.time()-t
         self.show_img()      
+
+        # Update the title to reflect the run time
         self.show_time(time_exec)
 
     def calculate(self):
+        """
+        Calculate the mandelbrot set.
+        """
+
         calcpixels = mandelbrot(self.plane, WIDTH, MAX_ITER)
         return calcpixels
 
     def show_img(self, pixels = None):
+        """
+        Paint the mandelbrot set on the canvas.
+        If the pixel array is not provided then paint the original mandelbrot set.
+        """
+
         pixels = self.default_mandelbrot if pixels is None else pixels
         root.myimg = myimg = ImageTk.PhotoImage(Image.fromarray(pixels, mode='RGB'))
         self.create_image(int(WIDTH/2), int(WIDTH/2), image=myimg)
 
     def set_plane_bounds(self):
+        """
+        Calculates the new complex coordinates denoting the boundaries of
+        the rectangle selected by the user.
+        """
+
         bbox = sorted([(self.start_x, self.start_y), (self.end_x, self.end_y)])
         r_width = self.plane[2] - self.plane[0]
         i_width = self.plane[3] - self.plane[1]
@@ -66,7 +86,6 @@ class Sketchpad(Canvas):
                       self.plane[1] + i_width*bbox[1][1]/WIDTH)
 
     def on_button_press(self, event):
-        # save mouse drag start position
         self.start_x = event.x
         self.start_y = event.y
 
@@ -84,9 +103,15 @@ class Sketchpad(Canvas):
             self.end_y = self.start_y + math.copysign(dX, dY)
 
         # expand rectangle as you drag the mouse
-        self.coords(self.rect, self.start_x, self.start_y, self.end_x, self.end_y)  
+        self.coords(self.rect, self.start_x, self.start_y, 
+                               self.end_x, self.end_y)  
 
     def on_button_release(self, event):
+        """
+        Calculates the mandelbrot set in the rectangle selected
+        by the user.
+        """
+
         self.set_plane_bounds()
         t = time.time()
         pixels = self.calculate()
@@ -95,21 +120,24 @@ class Sketchpad(Canvas):
         self.show_time(time_exec)
         
     def show_time(self, time_exec):
-        self.create_text(6, 6, text="{0:.3g} secs".format(time_exec), anchor = NW)
         root.title("{0:.3g} secs".format(time_exec))
 
     def reset(self, event):
+        """
+        Reset the plot on right click.
+        """
+
         self.plane = (-2.0, -1.5, 1.0, 1.5)
         self.show_img() 
 
 root = Tk()
 root.geometry("%dx%d+0+0" % (WIDTH, WIDTH))
-sketch = Sketchpad(root, 
-                   height = WIDTH, 
-                   width = WIDTH, 
-                   bd=0, 
-                   highlightthickness=0,
-                   cursor="cross")
+sketch = MandelbrotCanvas(root, 
+                          height = WIDTH, 
+                          width = WIDTH, 
+                          bd=0, 
+                          highlightthickness=0,
+                          cursor="cross")
 sketch.grid(column=0, row=0)
 
 root.mainloop()
