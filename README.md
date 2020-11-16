@@ -2,14 +2,15 @@
 
 Numba accelerated Mandelbrot Set Generator with zoom feature.
 
-Dependencies:
+Install the following dependencies:
 
-- `numpy`
 - `numba`
+- `numpy`
 - `Pillow`
+- `Tk`
 
 To execute the code run:
 
 ```
-python3 mandelbrot.py
+$ python3 mandelbrot.py
 ```
