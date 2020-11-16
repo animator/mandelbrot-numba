@@ -120,7 +120,7 @@ class MandelbrotCanvas(Canvas):
         self.show_time(time_exec)
         
     def show_time(self, time_exec):
-        root.title("{0:.2e}X Zoom - {1:.3g} secs".format(3.0/(self.plane[2]-self.plane[0]), time_exec))
+        root.title("{0:.2e}X Zoom - Time: {1:.3g} secs".format(3.0/(self.plane[2]-self.plane[0]), time_exec))
 
     def reset(self, event):
         """

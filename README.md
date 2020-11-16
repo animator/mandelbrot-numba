@@ -1,5 +1,7 @@
 # mandelbrot-numba
 
+![](mandelbrot.gif)
+
 Numba accelerated Mandelbrot Set Generator with zoom feature.
 
 Install the following dependencies:
