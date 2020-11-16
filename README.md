@@ -10,11 +10,11 @@ Each implementation has a dedicated branch and the recommended learning sequence
 | Branch | Data Layer | Key feature | `parallel` execution | Link |
 |--|--|--|--|--|
 | `python-list` | Native `list` | - | - | [Link](https://github.com/animator/mandelbrot-numba/tree/python-list) |
-| `njit-python-list` | Native `list` | `@njit` | - | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-python-list) |
-| `njit-parallel-python-list` | Native `list` | `@njit` | Yes | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-parallel-python-list) |
+| `njit-python-list` | Native `list` | `@numba.njit` decorator | - | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-python-list) |
+| `njit-parallel-python-list` | Native `list` | `@numba.njit` decorator | Yes | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-parallel-python-list) |
 | `numpy-array` | NumPy array | - | - | [Link](https://github.com/animator/mandelbrot-numba/tree/numpy-array) |
-| `njit-numpy-array` | NumPy array | `@njit` | - | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-numpy-array) |
-| `njit-parallel-numpy-array` | NumPy array | `@njit` | Yes | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-parallel-numpy-array) |
+| `njit-numpy-array` | NumPy array | `@numba.njit` decorator | - | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-numpy-array) |
+| `njit-parallel-numpy-array` | NumPy array | `@numba.njit` decorator | Yes | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-parallel-numpy-array) |
 
 To execute the code just run:
 
