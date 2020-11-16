@@ -15,6 +15,10 @@ Each implementation has a dedicated branch and the recommended learning sequence
 | `numpy-array` | NumPy array | - | - | [Link](https://github.com/animator/mandelbrot-numba/tree/numpy-array) |
 | `njit-numpy-array` | NumPy array | `@numba.njit` decorator | - | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-numpy-array) |
 | `njit-parallel-numpy-array` | NumPy array | `@numba.njit` decorator | Yes | [Link](https://github.com/animator/mandelbrot-numba/tree/njit-parallel-numpy-array) |
+| `numpy-vectorize` | NumPy array | `@numpy.vectorize` decorator | - | [Link](https://github.com/animator/mandelbrot-numba/tree/numpy-vectorize) |
+| `numba-vectorize` | NumPy array | `@numba.vectorize` decorator | - | [Link](https://github.com/animator/mandelbrot-numba/tree/numba-vectorize) |
+| `parallel-numba-vectorize` | NumPy array | `@numba.vectorize` decorator | Yes | [Link](https://github.com/animator/mandelbrot-numba/tree/parallel-numba-vectorize) |
+
 
 To execute the code just run:
 
